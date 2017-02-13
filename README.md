@@ -1,4 +1,4 @@
-# Node Todo App
+# Node Todo App for Azure App Service for Linux
 
 A Node app built with MongoDB and Angular. Deployed on Azure for demonstration purposes at the SoCal Node.js Meetup.
 
@@ -15,6 +15,7 @@ Thanks to [Scotch.io](https://github.com/scotch-io/node-todo_) for the starter p
 1. Clone the repository: `git clone https://github.com/michaelsaul/node-todo.git`
 2. Install the application: `npm install`
 2. Reconfigure Mongoose in server.js from this:
+
         ```
         // configuration ===============================================================
         mongoose.connect(database.localUrl); 	// Connect to local MongoDB instance. A remoteUrl is also available (modulus.io)
