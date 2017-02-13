@@ -54,6 +54,9 @@ Thanks to [Scotch.io](https://github.com/scotch-io/node-todo) for the starter pr
   2. Click on `Application settings`.
   3. Under `App settings` create a new key called `MONGODB_URL`. Paste the Connection String from Step 2.
   4. Click `Save`.
+
+### Option 1: Deploy directly from GitHub.
+
 6. Configure your newly created Azure Web App to deploy from GitHub.
   1. Select the App Service.
   2. Click on `Deployment options`
@@ -61,4 +64,29 @@ Thanks to [Scotch.io](https://github.com/scotch-io/node-todo) for the starter pr
   4. Select GitHub
   5. Follow the prompts to log in, select the correct repository, and branch.
   6. Click `OK`
-7. Browse to the URL of your newly created site.
+7. After deployment Sync is complete, browse to the URL of your newly created site.
+
+### Option 2: Deploy using Docker Container
+6. Create a Dockerfile:
+
+        ```
+        FROM node
+        MAINTAINER Michael Saul
+        LABEL Name=nodejsmeetup Version=0.0.1 
+        COPY package.json /tmp/package.json
+        RUN cd /tmp && npm install --production
+        RUN mkdir -p /usr/src/app && mv /tmp/node_modules /usr/src
+        WORKDIR /usr/src/app
+        COPY . /usr/src/app
+        EXPOSE 8080
+        CMD node server.js
+        ```
+
+7. 
+
+
+
+
+## Todo
+1. Add Deployment to Azure via ARM Template and Azure CLI.
+2. Add Deployment to Azure via ARM CLI 2.0 (Preview).
