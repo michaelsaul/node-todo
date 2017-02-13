@@ -59,11 +59,11 @@ Thanks to [Scotch.io](https://github.com/scotch-io/node-todo) for the starter pr
 
 6. Configure your newly created Azure Web App to deploy from GitHub.
   1. Select the App Service.
-  2. Click on `Deployment options`
-  3. Click on `Choose Source`
-  4. Select GitHub
+  2. Click on `Deployment options`.
+  3. Click on `Choose Source`.
+  4. Select GitHub.
   5. Follow the prompts to log in, select the correct repository, and branch.
-  6. Click `OK`
+  6. Click `OK`.
 7. After deployment Sync is complete, browse to the URL of your newly created site.
 
 ### Option 2: Deploy using Docker Container
@@ -82,10 +82,16 @@ Thanks to [Scotch.io](https://github.com/scotch-io/node-todo) for the starter pr
         CMD node server.js
         ```
 
-7. 
-
-
-
+7. Build the Docker image: `docker build .`
+8. Push the Docker Image to Docker Hub: `docker push YOURDOCKERREPO/nodejsmeetup`
+9. Configure the App Service to Pull the Docker image.
+  1. Select the App Service.
+  2. Click on `Docker Container`
+  3. Choose `Docker Hub` form Image source.
+  4. Enter Image and optional Tag: `YOURDOCKERREPO/nodejsmeetup`.
+  5. Enter a Startup Command: `node server.js`.
+  6. Click `Save`.
+10. After deployment is complete, browse the the URL of your newly created site.
 
 ## Todo
 1. Add Deployment to Azure via ARM Template and Azure CLI.
