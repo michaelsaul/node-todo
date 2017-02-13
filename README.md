@@ -1,31 +1,44 @@
 # Node Todo App
 
-A Node app built with MongoDB and Angular. For demonstration purposes and a tutorial.
+A Node app built with MongoDB and Angular. Deployed on Azure for demonstration purposes at the SoCal Node.js Meetup.
 
-Node provides the RESTful API. Angular provides the frontend and accesses the API. MongoDB stores like a hoarder.
+Thanks to [Scotch.io](https://github.com/scotch-io/node-todo_) for the starter project.
 
 ## Requirements
 
 - [Node and npm](http://nodejs.org)
-- MongoDB: Make sure you have your own local or remote MongoDB database URI configured in `config/database.js`
+- MongoDB: Make sure you have your own local or remote MongoDB database URI configured as an environment variable named MONGODB_URL
+- Azure Subscription: Sign up for a [Free Trial](https://azure.microsoft.com/en-us/free/)
 
 ## Installation
 
-1. Clone the repository: `git clone git@github.com:scotch-io/node-todo`
+1. Clone the repository: `git clone https://github.com/michaelsaul/node-todo.git`
 2. Install the application: `npm install`
 3. Place your own MongoDB URI in `config/database.js`
-3. Start the server: `node server.js`
-4. View in browser at `http://localhost:8080`
+4. Start the server: `node server.js`
+5. View in browser at `http://localhost:8080`
+6. Push your changes to a GitHub Repository
 
-## Tutorial Series
+## Deployment to Azure
 
-This repo corresponds to the Node Todo Tutorial Series on [scotch.io](http://scotch.io)
-
-Each branch represents a certain tutorial.
-- tut1-starter: [Creating a Single Page Todo App with Node and Angular](http://scotch.io/tutorials/javascript/creating-a-single-page-todo-app-with-node-and-angular)
-- tut2-organization: [Application Organization and Structure](https://scotch.io/tutorials/node-and-angular-to-do-app-application-organization-and-structure)
-- tut3-services: [Controllers and Services](https://scotch.io/tutorials/node-and-angular-to-do-app-controllers-and-services)
-
-Happy Todo-ing!
-
-![Todo-aholic](http://i.imgur.com/ikyqgrn.png)
+1. Create a DocumentDB Resource using the Azure Portal. Be sure to select `Database as a service for MongoDB (preview)`
+2. Reconfigure Mongoose in server.js from this:
+```
+// configuration ===============================================================
+mongoose.connect(database.localUrl); 	// Connect to local MongoDB instance. A remoteUrl is also available (modulus.io)
+```
+    To this:
+```
+// configuration ===============================================================
+mongoose.connect(process.env.MONGODB_URL || console.log('Something is wrong with the database'));
+```
+    You can now remove the `config` directory.
+3. Create an Azure App Service Resource. For this demo, we will be using `Web App On Linux (preview)`
+4. Configure your newly created Azure Web App to deploy from GitHub by comleting the following:
+  1. Select the App Service.
+  2. Click on `Deployment source`
+  3. Click on `Choose Source`
+  4. Select GitHub
+  5. Follow the prompts to log in, select the correct repository, and branch.
+  6. Click `OK`
+5. Browse to the URL of your newly created site.
