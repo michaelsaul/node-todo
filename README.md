@@ -46,7 +46,7 @@ Thanks to [Scotch.io](https://github.com/scotch-io/node-todo) for the starter pr
   1. Select the `Database as a service for MongoDB (preview)` and click `Create`.
   2. Name the database, select an Azure Subscription, create a new Resource Group, and click `Create`.
 3. Once the database is created, make note of the Connection String by clicking on `Connection String` and copying the connection string that begins with `mongodb://...`.
-4. Create an Azure App Service Resourece by clicking `Add` in the Resource Group. Search for `Web App On Linux`.
+4. Create an Azure App Service Resource by clicking `Add` in the Resource Group. Search for `Web App On Linux`.
   1. Select the `Web App On Linux (preview)` and click `Create`.
   2. Name the Web App, select an Azure Subscription, use your exsting resource group, create a new App Service plan, select the version of Node.js, and click `Create`.
 5. Once the Web App is created. Configure an Environment Variable.
