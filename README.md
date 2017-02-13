@@ -12,7 +12,7 @@ Thanks to [Scotch.io](https://github.com/scotch-io/node-todo) for the starter pr
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/michaelsaul/node-todo.git`
+1. Clone the repository: `git clone https://github.com/scotch-io/node-todo.git`
 2. Install the application: `npm install`
 2. Reconfigure Mongoose in server.js from this:
 
@@ -27,8 +27,14 @@ Thanks to [Scotch.io](https://github.com/scotch-io/node-todo) for the starter pr
         // configuration ===============================================================
         mongoose.connect(process.env.MONGODB_URL || console.log('Something is wrong with the database'));
         ```
+
+    Remove the following line:
+
+        ```
+        var database = require('./config/database'); 			// load the database config
+        ```
     
-    You can now remove the `config` directory.
+    You can now remove the `./config` directory.
 4. Start the server: `node server.js`.
 5. View in browser at `http://localhost:8080`.
 6. Push your changes to a GitHub Repository.
