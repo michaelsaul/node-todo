@@ -1,4 +1,3 @@
-
 FROM node:latest
 MAINTAINER Michael Saul
 LABEL Name=nodejsmeetup Version=0.0.1
